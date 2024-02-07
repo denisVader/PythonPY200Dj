@@ -19,16 +19,41 @@
 					<h4 class="text-center mb-4">
 						Заголовок вашей формы
 					</h4>
-					<form method="post">
+					<form action='', method="post">
                         {% csrf_token %}
 						<!-- Запишите здесь тег {% csrf_token %} -->
 
                         <label for="my_text">Введи своё имя</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
                         <div class="form-input">  <!-- Блок для оборачивания строки формы -->
-                            <span><i class="fa fa-id-card"></i></span>  <!-- Fontawesom картинка в строке ввода-->
-							<input type="text" id="my_text" name="my_text" placeholder="Иван" required>  <!-- Строка ввода-->
+                            <span><i class="fa fa-free-code-camp" aria-hidden="true"></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="text" id="my_text" name="my_text" placeholder="Имя" required>  <!-- Строка ввода-->
 						</div>
-                        <!-- Поле с выбором -->
+                        <label for="my_text">Введи свой email</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-free-code-camp" aria-hidden="true"></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="email" id="email" name="email" placeholder="email" required>  <!-- Строка ввода-->
+						</div>
+						<label for="my_text">Введи свой password</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-free-code-camp" aria-hidden="true"></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="password" id="password" name="password" placeholder="password" required>  <!-- Строка ввода-->
+						</div>
+						<label for="my_text">Введи дату</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-free-code-camp" aria-hidden="true"></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="date" id="date" name="date" placeholder="date" required>  <!-- Строка ввода-->
+						</div>
+						<label for="my_text">Введи целое число</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-free-code-camp" aria-hidden="true"></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="number" id="number" name="number" placeholder="number" required>  <!-- Строка ввода-->
+						</div>
+						<label for="my_text">Отметь</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                              <!-- Fontawesom картинка в строке ввода-->
+							<input type="checkbox" id="checkbox" name="checkbox" placeholder="checkbox" required>  <!-- Строка ввода-->
+						</div>
+						<!-- Поле с выбором -->
                         <label for="my_select">Выберите свои знания в Python</label>
                         <div class="form-input">
 							<span><i class="fa fa-free-code-camp"></i></span>
@@ -59,6 +84,17 @@
                         <!--------------------------------------------------------------------------------------------->
 
                         <!-- В форме всегда присутствует кнопка чтобы что-то отправить. Кнопку не изменять! -->
+                        {% if form.errors %}
+                            <div class="mb-3 d-flex align-items-center">
+                                <ul style="color: red; font-size: 16px">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <li>{{ field }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
 						<div class="mb-3"> 
 							<button type="submit" class="btn btn-block">
 								Отправить данные

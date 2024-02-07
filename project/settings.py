@@ -38,7 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'social_django',
+    'landing',
 ]
+
+AUTHENTICATION_BACKENDS = (
+   'social_core.backends.github.GithubOAuth2',
+   'django.contrib.auth.backends.ModelBackend',
+)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Пример настроек для использования консольного бэкенда (для тестирования)
+EMAIL_HOST = 'smtp.ethereal.email'
+EMAIL_HOST_USER = '	toney.satterfield@ethereal.email'
+EMAIL_HOST_PASSWORD = 'WTKEdQYvtjxFyqpfzQ'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL = '/profile/' # Чтобы после авторизации перенаправлялось на страницу пользователя
+
+SOCIAL_AUTH_GITHUB_KEY = 'dc64b4c286b09b65746b'
+SOCIAL_AUTH_GITHUB_SECRET = 'c1f1ac7d8aef81ecf3dc23eb863866c90b0fd551'
+SOCIAL_AUTH_GITHUB_SCOPE = ['user:email', 'read:user']
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -104,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
