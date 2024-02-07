@@ -38,8 +38,10 @@ class TemplView(View):
                 date = form.cleaned_data.get("date")
                 number = form.cleaned_data.get("number")
                 checkbox = form.cleaned_data.get("checkbox")
-                return JsonResponse(form.cleaned_data)
+                return JsonResponse(form.cleaned_data, json_dumps_params={'indent': 4,
+                                                                          'ensure_ascii': False})
             return render(request, 'app/template_form.html', context={"form": form})
+        return render(request, 'index.html')
     #  скопируйте код, что есть в template_view в теле условия request.method == "POST"
 
 class MyTemplView(TemplateView):

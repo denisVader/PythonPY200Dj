@@ -46,10 +46,10 @@ AUTHENTICATION_BACKENDS = (
    'social_core.backends.github.GithubOAuth2',
    'django.contrib.auth.backends.ModelBackend',
 )
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # Пример настроек для использования консольного бэкенда (для тестирования)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' # Пример настроек для использования консольного бэкенда (для тестирования)
 EMAIL_HOST = 'smtp.ethereal.email'
-EMAIL_HOST_USER = '	toney.satterfield@ethereal.email'
-EMAIL_HOST_PASSWORD = 'WTKEdQYvtjxFyqpfzQ'
+EMAIL_HOST_USER = 'johann30@ethereal.email'
+EMAIL_HOST_PASSWORD = 'REecCwWu1YAKAp1TGe'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
